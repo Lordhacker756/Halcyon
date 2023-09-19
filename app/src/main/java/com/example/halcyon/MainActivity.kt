@@ -1,10 +1,12 @@
 package com.example.halcyon
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
@@ -19,8 +21,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val play = findViewById<FloatingActionButton>(R.id.play)
-        val pause = findViewById<FloatingActionButton>(R.id.pause)
+        val pause = findViewById<FloatingActionButton>(R.id.pause_video)
         val stop = findViewById<FloatingActionButton>(R.id.stop)
+        val nav = findViewById<Button>(R.id.navBtn)
+
+        nav.setOnClickListener {
+            val intent = Intent(this, VideoPlayer::class.java)
+            startActivity(intent)
+        }
 
         seekBar = findViewById(R.id.music_progress)
         handler = Handler(Looper.getMainLooper())
